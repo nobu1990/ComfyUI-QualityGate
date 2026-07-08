@@ -1,0 +1,23 @@
+[project]
+name = "comfyui-qualitygate"
+version = "0.1.0"
+description = "生成物のQA/破綻検出をノード化。顔の有無・ボケを検出し、スコア化 → 閾値で合否判定 → 合格分だけ納品するComfyUIカスタムノード。"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+readme = "README.md"
+classifiers = [
+    "Operating System :: OS Independent",
+]
+# opencv / numpy は ComfyUI 本体が同梱済みだが、単体利用のため明示する。
+dependencies = [
+    "opencv-python",
+    "numpy",
+]
+
+[project.urls]
+Repository = "https://github.com/nobu1990/ComfyUI-QualityGate"
+
+[tool.comfy]
+PublisherId = "nobu1990"
+DisplayName = "ComfyUI-QualityGate"
+requires-comfyui = ">=1.0.0"

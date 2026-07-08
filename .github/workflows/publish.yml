@@ -1,0 +1,28 @@
+name: Publish to Comfy Registry
+
+# pyproject.toml の version を上げて main に push すると自動で publish される。
+# 事前準備: リポジトリの Secrets に REGISTRY_ACCESS_TOKEN を登録しておく
+# （https://registry.comfy.org でパブリッシャーを作成し、API キーを発行）。
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "pyproject.toml"
+
+permissions:
+  issues: write
+
+jobs:
+  publish-node:
+    name: Publish Custom Node
+    runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'nobu1990' }}
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+      - name: Publish Custom Node
+        uses: Comfy-Org/publish-node-action@v1
+        with:
+          personal_access_token: ${{ secrets.REGISTRY_ACCESS_TOKEN }}

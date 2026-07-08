@@ -1,6 +1,6 @@
 [project]
 name = "comfyui-qualitygate"
-version = "0.1.0"
+version = "0.1.1"
 description = "生成物のQA/破綻検出をノード化。顔の有無・ボケを検出し、スコア化 → 閾値で合否判定 → 合格分だけ納品するComfyUIカスタムノード。"
 license = { file = "LICENSE" }
 requires-python = ">=3.10"

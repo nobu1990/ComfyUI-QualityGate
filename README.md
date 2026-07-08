@@ -127,6 +127,18 @@ pip install -r ComfyUI-QualityGate/requirements.txt
 
 ComfyUI を再起動すると `QualityGate` カテゴリにノードが追加される。pose モデルは初回に `models/` へ自動DLされる。
 
+### 動作確認環境（Tested on）
+
+以下で動作確認済み。これ以外でも動くが、特に identity 軸は **insightface のバージョン差に注意**（本実装は高レベル API を使わず ONNX を直接ロードして回避している）。
+
+- Windows 11 / Python 3.11
+- opencv-python 4.13 / numpy 2.4
+- mediapipe 0.10.35（pose、CPU 実行）
+- onnxruntime-gpu 1.26（ArcFace。CUDA / CPU どちらでも動作）
+- insightface 0.2.1
+
+**GPU は任意。** 頭サイズ比の pose 計測は CPU、顔類似の ArcFace は CPU/GPU どちらでも動く（1枚あたり ≈ 0.5 s は CPU pose での実測）。
+
 ## 使い方
 
 `example_workflows/composite_rank_demo.json` を ComfyUI にドラッグ＆ドロップ。実運用では `VAEDecode` の IMAGE 出力を `CompositeRank` の `images` に繋ぎ、`best_image`（または `ranked_images` の上位）を `SaveImage` に送る。大量候補なら二段構成を使う。

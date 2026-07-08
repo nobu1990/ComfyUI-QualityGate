@@ -1,7 +1,7 @@
 [project]
 name = "comfyui-qualitygate"
-version = "0.1.1"
-description = "生成物のQA/破綻検出をノード化。顔の有無・ボケを検出し、スコア化 → 閾値で合否判定 → 合格分だけ納品するComfyUIカスタムノード。"
+version = "0.1.2"
+description = "顔→人物生成でブレる頭サイズ比(頭幅/肩幅)と顔の一致を、参照に近い順へ自動ランキング。顔類似×頭サイズ比×鮮鋭度の合成スコアで選別し、合格分だけ納品するComfyUIカスタムノード。"
 license = { file = "LICENSE" }
 requires-python = ">=3.10"
 readme = "README.md"
